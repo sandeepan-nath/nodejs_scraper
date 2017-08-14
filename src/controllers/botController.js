@@ -2,6 +2,7 @@
 var botController = function(botService)	
 {
 	//private functions here
+	/*
 	function generateUrls(limit) {
       var url = 'http://www.justdial.com/Pune/D-Mart-Near-Sadanand-Hotel-Amar-Mega-Plex-Baner/020PXX20-XX20-100811123323-U7B2_BZDET';
       var urls = [];
@@ -41,10 +42,13 @@ var botController = function(botService)
         wizard();
       });
     }
-	
+	*/
 	
 	var scrape = function(req,res){
+		res.send("Inside bot controller");
+		console.log("Inside bot controller");
 		
+		/*
 		var Model = require('../ext/model');
 		var Scraper = require('../ext/scraper');
 		var Pages = [];
@@ -57,6 +61,7 @@ var botController = function(botService)
 		for (var i = 0; i < numberOfParallelRequests; i++) {
 		  wizard();
 		}
+		*/
 	};
 	
 	return {
