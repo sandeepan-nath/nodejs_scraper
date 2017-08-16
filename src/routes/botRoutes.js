@@ -3,7 +3,9 @@ var botRouter = express.Router();
 
 //var botController = require('../controllers/botController')(null);
 var botController = require('../controllers/botController');
-botRouter.get('/scrape',botController.scrape);
+//botRouter.get('/scrape',botController.scrape);
+
+botRouter.route('/scrape').get(botController.scrape); 
 
 /*
 var router = function()

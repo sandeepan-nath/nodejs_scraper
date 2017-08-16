@@ -24,6 +24,7 @@
         var model;
         var self = this;
         self.on('loaded', function (html) {
+			console.log("Loaded!!");
             model = self.parsePage(html);
             self.emit('complete', model);
         });
@@ -31,7 +32,7 @@
     };
 	
 	
-	    Scraper.prototype.loadWebPage = function () {
+	Scraper.prototype.loadWebPage = function () {
       var self = this;
       //console.log('\n\nLoading ' + website);
       http.get(self.url, function (res) {
@@ -56,31 +57,15 @@
     **/
     Scraper.prototype.parsePage = function (html) {
       var $ = cheerio.load(html);
-      
-	  
-	  var numbers = array();
-	  $('div.telCntct cmawht > a. tel').each(function(eachNumber)
-	  {
-		  numbers.push(eachNumber);
-		
-	  });
-      var tel = numbers.pop();
-	  var cell = numbers.pop();
-	  
-	  /*
-	  var address = $('#address').text();
-      var fax = $('#fax').text();
-      var email = $('#email').text();
-      var website = $('#website').attr('href');
-      var postal =  $('#postal').text();
-	  */
+      var tel = $("div.content p").eq(3).contents().filter(function(){  return this.nodeType == 3; }).eq(4).text();
+	  var cell = tel;
+	  var email = $('div.content p').eq(2).find('b').text();
+	  var address = $('div.content p').eq(1).text();
 	  
 	  //Hardcoded values 
-	  var address = "Address temp";
-      var fax = 23587857280;
-      var email = "sandeepan.nits@gmail.com";
+	  var fax = "23587857280";
       var website = "website.com";
-      var postal =  436973486;
+      var postal =  "436973486";
 	  
 	  console.log("See website "+website);
       var model = {
